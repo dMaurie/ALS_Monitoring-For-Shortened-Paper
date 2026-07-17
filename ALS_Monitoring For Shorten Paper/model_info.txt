@@ -1,0 +1,122 @@
+deanmauriello@Mac ALS_Monitoring % ./.venv/bin/python train_model.py
+================================================================================
+PHASE IV: END-TO-END PIPELINE STRESS TEST & TRAINING EXECUTION
+================================================================================
+
+================================================================================
+PREPARING PYTORCH DATA PIPELINE GENERATION
+================================================================================
+[PYTORCH] Generating Training Dataset...
+[PYTORCH] Initializing dataset wrapper...
+[PYTORCH] Extracting 7-day sliding windows with dynamic labeling...
+[PYTORCH] Tensor generation complete. Normalized Input Shape: torch.Size([55680, 7, 6])
+[PYTORCH] Generating Global Validation Dataset...
+[PYTORCH] Initializing dataset wrapper...
+[PYTORCH] Extracting 7-day sliding windows with dynamic labeling...
+[PYTORCH] Tensor generation complete. Normalized Input Shape: torch.Size([13920, 7, 6])
+[PYTORCH] Generating Cohort-Specific Validation Datasets...
+[PYTORCH] Initializing dataset wrapper...
+[PYTORCH] Extracting 7-day sliding windows with dynamic labeling...
+[PYTORCH] Tensor generation complete. Normalized Input Shape: torch.Size([10440, 7, 6])
+[PYTORCH] Initializing dataset wrapper...
+[PYTORCH] Extracting 7-day sliding windows with dynamic labeling...
+[PYTORCH] Tensor generation complete. Normalized Input Shape: torch.Size([6960, 7, 6])
+
+[PIPELINE SUCCESS] Data Loaders built successfully.
+ -> Training Batches: 870 (Total Samples: 55680)
+ -> Global Val Batches: 218
+ -> Fine-Motor Val Batches: 164
+ -> Gross-Motor Val Batches: 109
+ -> Effective pos_weight for Training: 1.6061 (Bias: 1.35)
+================================================================================
+
+
+[SYSTEM] Executing training loop on hardware accelerator: mps
+
+--------------------------------------------------------------------------------
+COMMENCING 30-EPOCH TRAINING LOOP
+--------------------------------------------------------------------------------
+Epoch [01/30] | Train Loss: 0.4304 | Val Loss: 0.3942 | Fine AUC: 0.9123 | Gross AUC: 0.9288 | LR: 0.001000
+Epoch [02/30] | Train Loss: 0.4056 | Val Loss: 0.3951 | Fine AUC: 0.9118 | Gross AUC: 0.9272 | LR: 0.001000
+Epoch [03/30] | Train Loss: 0.4015 | Val Loss: 0.3915 | Fine AUC: 0.9124 | Gross AUC: 0.9336 | LR: 0.001000
+Epoch [04/30] | Train Loss: 0.3988 | Val Loss: 0.3949 | Fine AUC: 0.9121 | Gross AUC: 0.9318 | LR: 0.001000
+Epoch [05/30] | Train Loss: 0.3963 | Val Loss: 0.3918 | Fine AUC: 0.9142 | Gross AUC: 0.9343 | LR: 0.001000
+Epoch [06/30] | Train Loss: 0.3926 | Val Loss: 0.3968 | Fine AUC: 0.9145 | Gross AUC: 0.9319 | LR: 0.000500
+Epoch [07/30] | Train Loss: 0.3894 | Val Loss: 0.3908 | Fine AUC: 0.9154 | Gross AUC: 0.9322 | LR: 0.000500
+Epoch [08/30] | Train Loss: 0.3873 | Val Loss: 0.3921 | Fine AUC: 0.9151 | Gross AUC: 0.9312 | LR: 0.000500
+Epoch [09/30] | Train Loss: 0.3867 | Val Loss: 0.3957 | Fine AUC: 0.9134 | Gross AUC: 0.9318 | LR: 0.000500
+Epoch [10/30] | Train Loss: 0.3849 | Val Loss: 0.3960 | Fine AUC: 0.9144 | Gross AUC: 0.9297 | LR: 0.000250
+Epoch [11/30] | Train Loss: 0.3831 | Val Loss: 0.3953 | Fine AUC: 0.9141 | Gross AUC: 0.9304 | LR: 0.000250
+Epoch [12/30] | Train Loss: 0.3825 | Val Loss: 0.3956 | Fine AUC: 0.9135 | Gross AUC: 0.9308 | LR: 0.000250
+Epoch [13/30] | Train Loss: 0.3813 | Val Loss: 0.3954 | Fine AUC: 0.9135 | Gross AUC: 0.9309 | LR: 0.000125
+Epoch [14/30] | Train Loss: 0.3800 | Val Loss: 0.3977 | Fine AUC: 0.9131 | Gross AUC: 0.9300 | LR: 0.000125
+Epoch [15/30] | Train Loss: 0.3788 | Val Loss: 0.3978 | Fine AUC: 0.9131 | Gross AUC: 0.9302 | LR: 0.000125
+Epoch [16/30] | Train Loss: 0.3789 | Val Loss: 0.3988 | Fine AUC: 0.9122 | Gross AUC: 0.9308 | LR: 0.000063
+Epoch [17/30] | Train Loss: 0.3786 | Val Loss: 0.3985 | Fine AUC: 0.9122 | Gross AUC: 0.9306 | LR: 0.000063
+Epoch [18/30] | Train Loss: 0.3780 | Val Loss: 0.3999 | Fine AUC: 0.9124 | Gross AUC: 0.9302 | LR: 0.000063
+Epoch [19/30] | Train Loss: 0.3783 | Val Loss: 0.3997 | Fine AUC: 0.9122 | Gross AUC: 0.9302 | LR: 0.000031
+Epoch [20/30] | Train Loss: 0.3782 | Val Loss: 0.3986 | Fine AUC: 0.9124 | Gross AUC: 0.9301 | LR: 0.000031
+Epoch [21/30] | Train Loss: 0.3775 | Val Loss: 0.3991 | Fine AUC: 0.9122 | Gross AUC: 0.9301 | LR: 0.000031
+Epoch [22/30] | Train Loss: 0.3772 | Val Loss: 0.3990 | Fine AUC: 0.9124 | Gross AUC: 0.9299 | LR: 0.000016
+
+[EARLY STOPPING] Validation loss stagnated for 15 epochs. Halting to preserve optimal weights.
+
+================================================================================
+FINAL CLINICAL EVALUATION & PAPER ASSESSMENT
+================================================================================
+Fine-Motor (Upper/Simultaneous) ROC AUC: 0.9154          Target (>= 0.93): ⚠️
+Gross-Motor (Lower Limb) ROC AUC:        0.9322          Target (>= 0.90): ✅
+
+[WARNING] One or more targets missed. Adjust SENSITIVITY_TUNING_FACTOR or alpha smoothing.
+
+--------------------------------------------------------------------------------
+FINE-MOTOR COHORTS CLASSIFICATION REPORT
+              precision    recall  f1-score   support
+
+     Healthy       0.85      0.95      0.90      6205
+ ALS Decline       0.91      0.75      0.82      4235
+
+    accuracy                           0.87     10440
+   macro avg       0.88      0.85      0.86     10440
+weighted avg       0.87      0.87      0.87     10440
+
+Confusion Matrix [TN, FP] / [FN, TP]:
+[[5889  316]
+ [1058 3177]]
+
+--------------------------------------------------------------------------------
+GROSS-MOTOR COHORTS CLASSIFICATION REPORT
+              precision    recall  f1-score   support
+
+     Healthy       0.92      0.94      0.93      4749
+ ALS Decline       0.86      0.82      0.84      2211
+
+    accuracy                           0.90      6960
+   macro avg       0.89      0.88      0.88      6960
+weighted avg       0.90      0.90      0.90      6960
+
+Confusion Matrix [TN, FP] / [FN, TP]:
+[[4467  282]
+ [ 408 1803]]
+================================================================================
+[SYSTEM] Best model weights secured. Architecture ready for Transfer Learning.
+deanmauriello@Mac ALS_Monitoring % ./.venv/bin/python deploy_transfer_learning.py
+================================================================================
+PHASE V: CLINICAL DEPLOYMENT & TRANSFER LEARNING PROTOCOL
+================================================================================
+/Users/deanmauriello/Desktop/ALS_Monitoring/.venv/lib/python3.14/site-packages/torch/nn/modules/rnn.py:1009: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  super().__init__("LSTM", *args, **kwargs)
+[SYSTEM] Pre-trained clinical weights successfully loaded.
+
+Executing Sub-network Freeze...
+[AUDIT] Frozen components: ['branch_A_lstm', 'branch_B_lstm', 'cross_attention']
+[AUDIT] Trainable parameters limited to: ['gate_layer.weight', 'gate_layer.bias', 'classifier.0.weight', 'classifier.0.bias', 'classifier.3.weight', 'classifier.3.bias']
+
+--------------------------------------------------------------------------------
+SIMULATING LIVE HUMAN DATA INGESTION (FINE-TUNING)
+--------------------------------------------------------------------------------
+[SUCCESS] Gradients successfully isolated to classification head.
+[SUCCESS] Pre-trained physiological feature extractors remained frozen.
+
+[PIPELINE READY] System is fully prepared for secure university server deployment.
+================================================================================
